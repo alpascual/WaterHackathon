@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8836193B144DE223005D8735 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193A144DE223005D8735 /* UIKit.framework */; };
+		8836193D144DE223005D8735 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193C144DE223005D8735 /* Foundation.framework */; };
+		8836193F144DE223005D8735 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193E144DE223005D8735 /* CoreGraphics.framework */; };
+		88361945144DE223005D8735 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88361943144DE223005D8735 /* InfoPlist.strings */; };
+		88361947144DE223005D8735 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88361946144DE223005D8735 /* main.m */; };
+		8836194B144DE223005D8735 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8836194A144DE223005D8735 /* AppDelegate.m */; };
+		8836194E144DE223005D8735 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8836194D144DE223005D8735 /* MainViewController.m */; };
+		88361951144DE223005D8735 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88361950144DE223005D8735 /* FlipsideViewController.m */; };
+		88361954144DE223005D8735 /* MainViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88361952144DE223005D8735 /* MainViewController_iPhone.xib */; };
+		88361957144DE223005D8735 /* MainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88361955144DE223005D8735 /* MainViewController_iPad.xib */; };
+		8836195A144DE223005D8735 /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88361958144DE223005D8735 /* FlipsideViewController.xib */; };
+		88361961144DE381005D8735 /* libArcGIS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88361960144DE381005D8735 /* libArcGIS.a */; };
+		88361963144DE4C8005D8735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88361962144DE4C8005D8735 /* CoreLocation.framework */; };
+		88361965144DE4DA005D8735 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88361964144DE4DA005D8735 /* QuartzCore.framework */; };
+		88361967144DE4E6005D8735 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88361966144DE4E6005D8735 /* CoreText.framework */; };
+		88361969144DE4F9005D8735 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88361968144DE4F9005D8735 /* libstdc++.dylib */; };
+		8836196B144DE502005D8735 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836196A144DE502005D8735 /* MediaPlayer.framework */; };
+		8836196D144DE50B005D8735 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836196C144DE50B005D8735 /* MobileCoreServices.framework */; };
+		8836196F144DE60B005D8735 /* ArcGIS.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8836196E144DE60B005D8735 /* ArcGIS.bundle */; };
+		8836197C144DFDDD005D8735 /* FeatureTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8836197A144DFDDD005D8735 /* FeatureTypeViewController.m */; };
+		8836197D144DFDDD005D8735 /* FeatureTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8836197B144DFDDD005D8735 /* FeatureTypeViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		88361936144DE223005D8735 /* WaterHackthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterHackthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8836193A144DE223005D8735 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8836193C144DE223005D8735 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8836193E144DE223005D8735 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		88361942144DE223005D8735 /* WaterHackthon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WaterHackthon-Info.plist"; sourceTree = "<group>"; };
+		88361944144DE223005D8735 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		88361946144DE223005D8735 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88361948144DE223005D8735 /* WaterHackthon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WaterHackthon-Prefix.pch"; sourceTree = "<group>"; };
+		88361949144DE223005D8735 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8836194A144DE223005D8735 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8836194C144DE223005D8735 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8836194D144DE223005D8735 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8836194F144DE223005D8735 /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		88361950144DE223005D8735 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		88361953144DE223005D8735 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPhone.xib; sourceTree = "<group>"; };
+		88361956144DE223005D8735 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController_iPad.xib; sourceTree = "<group>"; };
+		88361959144DE223005D8735 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
+		88361960144DE381005D8735 /* libArcGIS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libArcGIS.a; path = ../../../Library/SDKs/ArcGIS/iOS.sdk/usr/local/lib/libArcGIS.a; sourceTree = "<group>"; };
+		88361962144DE4C8005D8735 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		88361964144DE4DA005D8735 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		88361966144DE4E6005D8735 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		88361968144DE4F9005D8735 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		8836196A144DE502005D8735 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		8836196C144DE50B005D8735 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8836196E144DE60B005D8735 /* ArcGIS.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ArcGIS.bundle; path = ../../../Library/SDKs/ArcGIS/iOS.sdk/usr/local/resources/ArcGIS.bundle; sourceTree = "<group>"; };
+		88361979144DFDDD005D8735 /* FeatureTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureTypeViewController.h; sourceTree = "<group>"; };
+		8836197A144DFDDD005D8735 /* FeatureTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureTypeViewController.m; sourceTree = "<group>"; };
+		8836197B144DFDDD005D8735 /* FeatureTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeatureTypeViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88361933144DE223005D8735 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8836196D144DE50B005D8735 /* MobileCoreServices.framework in Frameworks */,
+				8836196B144DE502005D8735 /* MediaPlayer.framework in Frameworks */,
+				88361969144DE4F9005D8735 /* libstdc++.dylib in Frameworks */,
+				88361967144DE4E6005D8735 /* CoreText.framework in Frameworks */,
+				88361965144DE4DA005D8735 /* QuartzCore.framework in Frameworks */,
+				8836193D144DE223005D8735 /* Foundation.framework in Frameworks */,
+				88361963144DE4C8005D8735 /* CoreLocation.framework in Frameworks */,
+				8836193F144DE223005D8735 /* CoreGraphics.framework in Frameworks */,
+				88361961144DE381005D8735 /* libArcGIS.a in Frameworks */,
+				8836193B144DE223005D8735 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8836192B144DE223005D8735 = {
+			isa = PBXGroup;
+			children = (
+				8836196E144DE60B005D8735 /* ArcGIS.bundle */,
+				8836196C144DE50B005D8735 /* MobileCoreServices.framework */,
+				8836196A144DE502005D8735 /* MediaPlayer.framework */,
+				88361968144DE4F9005D8735 /* libstdc++.dylib */,
+				88361966144DE4E6005D8735 /* CoreText.framework */,
+				88361964144DE4DA005D8735 /* QuartzCore.framework */,
+				88361962144DE4C8005D8735 /* CoreLocation.framework */,
+				88361960144DE381005D8735 /* libArcGIS.a */,
+				88361940144DE223005D8735 /* WaterHackthon */,
+				88361939144DE223005D8735 /* Frameworks */,
+				88361937144DE223005D8735 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		88361937144DE223005D8735 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88361936144DE223005D8735 /* WaterHackthon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88361939144DE223005D8735 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8836193A144DE223005D8735 /* UIKit.framework */,
+				8836193C144DE223005D8735 /* Foundation.framework */,
+				8836193E144DE223005D8735 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88361940144DE223005D8735 /* WaterHackthon */ = {
+			isa = PBXGroup;
+			children = (
+				88361979144DFDDD005D8735 /* FeatureTypeViewController.h */,
+				8836197A144DFDDD005D8735 /* FeatureTypeViewController.m */,
+				8836197B144DFDDD005D8735 /* FeatureTypeViewController.xib */,
+				88361949144DE223005D8735 /* AppDelegate.h */,
+				8836194A144DE223005D8735 /* AppDelegate.m */,
+				8836194C144DE223005D8735 /* MainViewController.h */,
+				8836194D144DE223005D8735 /* MainViewController.m */,
+				8836194F144DE223005D8735 /* FlipsideViewController.h */,
+				88361950144DE223005D8735 /* FlipsideViewController.m */,
+				88361952144DE223005D8735 /* MainViewController_iPhone.xib */,
+				88361955144DE223005D8735 /* MainViewController_iPad.xib */,
+				88361958144DE223005D8735 /* FlipsideViewController.xib */,
+				88361941144DE223005D8735 /* Supporting Files */,
+			);
+			path = WaterHackthon;
+			sourceTree = "<group>";
+		};
+		88361941144DE223005D8735 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				88361942144DE223005D8735 /* WaterHackthon-Info.plist */,
+				88361943144DE223005D8735 /* InfoPlist.strings */,
+				88361946144DE223005D8735 /* main.m */,
+				88361948144DE223005D8735 /* WaterHackthon-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88361935144DE223005D8735 /* WaterHackthon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8836195D144DE223005D8735 /* Build configuration list for PBXNativeTarget "WaterHackthon" */;
+			buildPhases = (
+				88361932144DE223005D8735 /* Sources */,
+				88361933144DE223005D8735 /* Frameworks */,
+				88361934144DE223005D8735 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WaterHackthon;
+			productName = WaterHackthon;
+			productReference = 88361936144DE223005D8735 /* WaterHackthon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8836192D144DE223005D8735 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 88361930144DE223005D8735 /* Build configuration list for PBXProject "WaterHackthon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8836192B144DE223005D8735;
+			productRefGroup = 88361937144DE223005D8735 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88361935144DE223005D8735 /* WaterHackthon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88361934144DE223005D8735 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88361945144DE223005D8735 /* InfoPlist.strings in Resources */,
+				88361954144DE223005D8735 /* MainViewController_iPhone.xib in Resources */,
+				88361957144DE223005D8735 /* MainViewController_iPad.xib in Resources */,
+				8836195A144DE223005D8735 /* FlipsideViewController.xib in Resources */,
+				8836196F144DE60B005D8735 /* ArcGIS.bundle in Resources */,
+				8836197D144DFDDD005D8735 /* FeatureTypeViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88361932144DE223005D8735 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88361947144DE223005D8735 /* main.m in Sources */,
+				8836194B144DE223005D8735 /* AppDelegate.m in Sources */,
+				8836194E144DE223005D8735 /* MainViewController.m in Sources */,
+				88361951144DE223005D8735 /* FlipsideViewController.m in Sources */,
+				8836197C144DFDDD005D8735 /* FeatureTypeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		88361943144DE223005D8735 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88361944144DE223005D8735 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		88361952144DE223005D8735 /* MainViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88361953144DE223005D8735 /* en */,
+			);
+			name = MainViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		88361955144DE223005D8735 /* MainViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88361956144DE223005D8735 /* en */,
+			);
+			name = MainViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		88361958144DE223005D8735 /* FlipsideViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88361959144DE223005D8735 /* en */,
+			);
+			name = FlipsideViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8836195B144DE223005D8735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8836195C144DE223005D8735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8836195E144DE223005D8735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WaterHackthon/WaterHackthon-Prefix.pch";
+				INFOPLIST_FILE = "WaterHackthon/WaterHackthon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/SDKs/ArcGIS/iOS.sdk/usr/local/lib\"",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(HOME)/Library/SDKs/ArcGIS/iOS.sdk/usr/local/include/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8836195F144DE223005D8735 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WaterHackthon/WaterHackthon-Prefix.pch";
+				INFOPLIST_FILE = "WaterHackthon/WaterHackthon-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/SDKs/ArcGIS/iOS.sdk/usr/local/lib\"",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(HOME)/Library/SDKs/ArcGIS/iOS.sdk/usr/local/include/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88361930144DE223005D8735 /* Build configuration list for PBXProject "WaterHackthon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8836195B144DE223005D8735 /* Debug */,
+				8836195C144DE223005D8735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8836195D144DE223005D8735 /* Build configuration list for PBXNativeTarget "WaterHackthon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8836195E144DE223005D8735 /* Debug */,
+				8836195F144DE223005D8735 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8836192D144DE223005D8735 /* Project object */;
+}
