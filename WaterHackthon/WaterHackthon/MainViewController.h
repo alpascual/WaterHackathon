@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSTimer *crumbsTimer;
 @property (strong, nonatomic) AGSPoint *lastPoint;
 @property (strong, nonatomic) AGSPoint *lastPointCrumb;
+@property (strong, nonatomic) AGSDynamicMapServiceLayer *waterDynamic;
 
 - (IBAction)showInfo:(id)sender;
 

@@ -23,6 +23,7 @@
 @synthesize crumbsFeatureLayer = _crumbsFeatureLayer;
 @synthesize crumbsTimer = _crumbsTimer;
 @synthesize lastPointCrumb = _lastPointCrumb;
+@synthesize waterDynamic = _waterDynamic;
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,6 +47,10 @@
     // Load the map
     AGSOpenStreetMapLayer *openSteetMap = [[AGSOpenStreetMapLayer alloc] init];
     [self.mapView addMapLayer:openSteetMap withName:@"BaseLayer"];
+    
+    // Dynamic map
+    NSURL* waterDynamicUrl = [NSURL URLWithString:@"http://maps3.arcgisonline.com/ArcGIS/rest/services/A-16/K%c3%b6ppen-Geiger_Observed_and_Predicted_Climate_Shifts/MapServer"]; 	 
+    self.waterDynamic = [AGSDynamicMapServiceLayer dynamicMapServiceLayerWithURL:waterDynamicUrl];
     
     // Init FeatureServices
     NSURL* waterSourceUrl = [NSURL URLWithString:@"http://hydro.esri.com/ArcGIS/rest/services/WaterSource/FeatureServer/0"]; 	 
@@ -74,12 +79,18 @@
     self.crumbsFeatureLayer.infoTemplateDelegate = self.crumbsFeatureLayer;
     self.crumbsFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];  
     
+    //[self.mapView addMapLayer:self.crumbsFeatureLayer withName:@"breadcrumbs"];
     
-    //AGSWebMap* webmap = [AGSWebMap webMapWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:nil];    
-    //[[AGSWebMap alloc] initWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:nil];    
-    //webmap.delegate = self;    
-    //[self.mapView addMapLayer:webmap withName:@"webMap"];
-    //[webmap openIntoMapView:self.mapView];
+    
+    
+    
+    /*AGSCredential* credential = [[AGSCredential alloc] initWithUser:@"<user>" password:@"<password>"];
+    credential.authType = AGSAuthenticationTypeToken;
+    AGSWebMap* webmap = [AGSWebMap webMapWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:credential];    
+       
+    webmap.delegate = self;    
+    
+    [webmap openIntoMapView:self.mapView];*/
 
        
 }
@@ -267,6 +278,7 @@
         FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
         controller.mapView = self.mapView;
         controller.crumbsFeatureLayer = self.crumbsFeatureLayer;
+        controller.waterDynamic = self.waterDynamic;
         
         controller.delegate = self;
         controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -277,6 +289,7 @@
             FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];            
             controller.mapView = self.mapView;
             controller.crumbsFeatureLayer = self.crumbsFeatureLayer;
+            controller.waterDynamic = self.waterDynamic;
             
             controller.delegate = self;
             

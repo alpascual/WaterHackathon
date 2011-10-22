@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		768C7B63145387AB005038EB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 768C7B5F145387AB005038EB /* Default.png */; };
+		768C7B64145387AB005038EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 768C7B60145387AB005038EB /* Icon-72.png */; };
+		768C7B65145387AB005038EB /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 768C7B61145387AB005038EB /* Icon.png */; };
+		768C7B66145387AB005038EB /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 768C7B62145387AB005038EB /* Icon@2x.png */; };
 		8836193B144DE223005D8735 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193A144DE223005D8735 /* UIKit.framework */; };
 		8836193D144DE223005D8735 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193C144DE223005D8735 /* Foundation.framework */; };
 		8836193F144DE223005D8735 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8836193E144DE223005D8735 /* CoreGraphics.framework */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		768C7B5F145387AB005038EB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = WaterHackthon/Resources/Default.png; sourceTree = "<group>"; };
+		768C7B60145387AB005038EB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "WaterHackthon/Resources/Icon-72.png"; sourceTree = "<group>"; };
+		768C7B61145387AB005038EB /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = WaterHackthon/Resources/Icon.png; sourceTree = "<group>"; };
+		768C7B62145387AB005038EB /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "WaterHackthon/Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		88361936144DE223005D8735 /* WaterHackthon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterHackthon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8836193A144DE223005D8735 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8836193C144DE223005D8735 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -82,9 +90,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		768C7B5D14538787005038EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				768C7B5F145387AB005038EB /* Default.png */,
+				768C7B60145387AB005038EB /* Icon-72.png */,
+				768C7B61145387AB005038EB /* Icon.png */,
+				768C7B62145387AB005038EB /* Icon@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		8836192B144DE223005D8735 = {
 			isa = PBXGroup;
 			children = (
+				768C7B5D14538787005038EB /* Resources */,
 				8836196E144DE60B005D8735 /* ArcGIS.bundle */,
 				8836196C144DE50B005D8735 /* MobileCoreServices.framework */,
 				8836196A144DE502005D8735 /* MediaPlayer.framework */,
@@ -204,6 +224,10 @@
 				8836195A144DE223005D8735 /* FlipsideViewController.xib in Resources */,
 				8836196F144DE60B005D8735 /* ArcGIS.bundle in Resources */,
 				8836197D144DFDDD005D8735 /* FeatureTypeViewController.xib in Resources */,
+				768C7B63145387AB005038EB /* Default.png in Resources */,
+				768C7B64145387AB005038EB /* Icon-72.png in Resources */,
+				768C7B65145387AB005038EB /* Icon.png in Resources */,
+				768C7B66145387AB005038EB /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +392,7 @@
 				8836195F144DE223005D8735 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

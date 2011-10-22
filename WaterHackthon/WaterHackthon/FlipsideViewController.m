@@ -16,6 +16,8 @@
 @synthesize baseMaps = _baseMaps;
 @synthesize gpsHistory = _gpsHistory;
 @synthesize crumbsFeatureLayer = _crumbsFeatureLayer;
+@synthesize waterSwitch = _waterSwitch;
+@synthesize waterDynamic = _waterDynamic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,8 +53,27 @@
     // Is the crumbs enabled?
     if ( [layers count] < 5 )   
         [self.gpsHistory setOn:NO];
-    else
-        [self.gpsHistory setOn:YES];
+    else {
+        for (AGSFeatureLayer *featureLayer in layers) {
+            if ( [featureLayer isKindOfClass:[AGSFeatureLayer class]] )
+            {
+                if ( [featureLayer.name isEqualToString:@"breadcrumbs"])
+                    [self.gpsHistory setOn:YES];
+            }
+        }      
+        
+    }
+    
+    // Dynamic
+    if ( [layers count] > 2 ) {
+        
+        for (AGSDynamicMapServiceLayer *dynamicWaterLayer in layers) {
+            if ( [dynamicWaterLayer isKindOfClass:[AGSDynamicMapServiceLayer class]]) {                
+                if ( [dynamicWaterLayer.name isEqualToString:@"waterlayer"] )
+                    [self.waterSwitch setOn:YES];
+            }
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -134,6 +155,19 @@
         [self.mapView addMapLayer:self.crumbsFeatureLayer withName:@"breadcrumbs"];
     else
         [self.mapView removeMapLayerWithName:@"breadcrumbs"];
+}
+
+- (IBAction)waterLayerSwitch:(id)sender {
+    if ( self.waterSwitch.isOn == YES ) {
+         UIView* dynamicView = [self.mapView addMapLayer:self.waterDynamic withName:@"waterlayer"];
+        dynamicView.alpha = 0.6;
+        
+    }
+        
+    else {
+        [self.mapView removeMapLayerWithName:@"waterlayer"];
+        
+    }
 }
 
 @end
