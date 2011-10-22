@@ -11,8 +11,9 @@
 #import "ArcGIS.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, FlipFeaturesControllerDelegate, AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSMapViewCalloutDelegate, 
- AGSFeatureLayerEditingDelegate,AGSAttachmentManagerDelegate,
- AGSInfoTemplateDelegate, AGSPopupsContainerDelegate>
+    AGSFeatureLayerEditingDelegate,AGSAttachmentManagerDelegate,
+    AGSInfoTemplateDelegate, AGSPopupsContainerDelegate, 
+    AGSWebMapDelegate>
 {
     BOOL bNewFeature;
 }

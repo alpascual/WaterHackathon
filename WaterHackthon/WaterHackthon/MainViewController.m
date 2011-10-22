@@ -42,7 +42,7 @@
     self.mapView.wrapAround = YES;
     self.mapView.layerDelegate = self;
     self.mapView.gps.autoPan = TRUE;
-    
+            
     // Load the map
     AGSOpenStreetMapLayer *openSteetMap = [[AGSOpenStreetMapLayer alloc] init];
     [self.mapView addMapLayer:openSteetMap withName:@"BaseLayer"];
@@ -62,15 +62,9 @@
     
     // Devices
     NSURL* devicesUrl = [NSURL URLWithString:@"http://hydro.esri.com/ArcGIS/rest/services/WaterSource/FeatureServer/2"]; 	 
-    self.devicesFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:devicesUrl mode: AGSFeatureLayerModeSelection];
+    self.devicesFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:devicesUrl mode: AGSFeatureLayerModeSnapshot];
     self.devicesFeatureLayer.infoTemplateDelegate = self.devicesFeatureLayer;
     self.devicesFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];
-    
-    // Do not show yourself in the map
-    NSString *theQueryString = [[NSString alloc] initWithFormat:@"NAME != '%@'", [[UIDevice currentDevice] name]];
-    AGSQuery* query = [AGSQuery query]; 
-    query.where = theQueryString;
-    [self.devicesFeatureLayer selectFeaturesWithQuery:query selectionMethod:AGSFeatureLayerSelectionMethodAdd];
     
     [self.mapView addMapLayer:self.devicesFeatureLayer withName:@"devices"];
     
@@ -78,13 +72,20 @@
     NSURL* crumbsUrl = [NSURL URLWithString:@"http://hydro.esri.com/ArcGIS/rest/services/WaterSource/FeatureServer/3"]; 	 
     self.crumbsFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:crumbsUrl mode: AGSFeatureLayerModeSnapshot];
     self.crumbsFeatureLayer.infoTemplateDelegate = self.crumbsFeatureLayer;
-    self.crumbsFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];   
-     
+    self.crumbsFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];  
+    
+    
+    //AGSWebMap* webmap = [AGSWebMap webMapWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:nil];    
+    //[[AGSWebMap alloc] initWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:nil];    
+    //webmap.delegate = self;    
+    //[self.mapView addMapLayer:webmap withName:@"webMap"];
+    //[webmap openIntoMapView:self.mapView];
+
        
 }
 
 
-- (void) mapViewDidLoad:(AGSMapView *)mapView {
+- (void) mapViewDidLoad:(AGSMapView *)mapView {    
     [self.mapView.gps start];
     
     self.mapView.calloutDelegate = self;
@@ -104,15 +105,18 @@
         
         if ( point.x != self.lastPoint.x) {    
             
+            NSString *myDeviceName = [[UIDevice currentDevice] name];
+            NSString *myCleanDevice = [myDeviceName stringByReplacingOccurrencesOfString:@"'" withString:@""];
+            
             // Delete previous points
-            NSString *theQueryString = [[NSString alloc] initWithFormat:@"NAME = '%@'", [[UIDevice currentDevice] name]];
+            NSString *theQueryString = [[NSString alloc] initWithFormat:@"NAME = '%@'", myCleanDevice];
             [self.devicesFeatureLayer deleteFeaturesWithWhereClause:theQueryString geometry:self.mapView.fullEnvelope spatialRelation:AGSSpatialRelationshipWithin];
             
             // Add the last
             AGSGraphic *graphic = [[AGSGraphic alloc] init];
             graphic.geometry = point;       
             graphic.attributes = [[NSMutableDictionary alloc] init];
-            [graphic.attributes setObject:[[UIDevice currentDevice] name] forKey:@"NAME"]; 
+            [graphic.attributes setObject:myCleanDevice forKey:@"NAME"]; 
             
             /*NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"M/d/yyyy h:mm a"];
