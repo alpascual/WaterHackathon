@@ -18,6 +18,11 @@
 @synthesize theNewFeature = _theNewFeature;
 @synthesize sketchLayer = _sketchLayer;
 @synthesize selectedFeatureLayer = _selectedFeatureLayer;
+@synthesize deviceTimer = _deviceTimer;
+@synthesize lastPoint = _lastPoint;
+@synthesize crumbsFeatureLayer = _crumbsFeatureLayer;
+@synthesize crumbsTimer = _crumbsTimer;
+@synthesize lastPointCrumb = _lastPointCrumb;
 
 - (void)didReceiveMemoryWarning
 {
@@ -31,6 +36,7 @@
 {
     [super viewDidLoad];
 	
+    self.title = @"Water Hackathon";
 
     // Wrap Around the world
     self.mapView.wrapAround = YES;
@@ -54,17 +60,95 @@
     self.dwellingFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];
     [self.mapView addMapLayer:self.dwellingFeatureLayer withName:@"dwelling"]; 
     
+    // Devices
     NSURL* devicesUrl = [NSURL URLWithString:@"http://hydro.esri.com/ArcGIS/rest/services/WaterSource/FeatureServer/2"]; 	 
-    self.devicesFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:devicesUrl mode: AGSFeatureLayerModeSnapshot];
+    self.devicesFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:devicesUrl mode: AGSFeatureLayerModeSelection];
     self.devicesFeatureLayer.infoTemplateDelegate = self.devicesFeatureLayer;
     self.devicesFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];
-    [self.mapView addMapLayer:self.devicesFeatureLayer withName:@"dwelling"];
+    
+    // Do not show yourself in the map
+    NSString *theQueryString = [[NSString alloc] initWithFormat:@"NAME != '%@'", [[UIDevice currentDevice] name]];
+    AGSQuery* query = [AGSQuery query]; 
+    query.where = theQueryString;
+    [self.devicesFeatureLayer selectFeaturesWithQuery:query selectionMethod:AGSFeatureLayerSelectionMethodAdd];
+    
+    [self.mapView addMapLayer:self.devicesFeatureLayer withName:@"devices"];
+    
+    // BreadCumbs
+    NSURL* crumbsUrl = [NSURL URLWithString:@"http://hydro.esri.com/ArcGIS/rest/services/WaterSource/FeatureServer/3"]; 	 
+    self.crumbsFeatureLayer = [AGSFeatureLayer featureServiceLayerWithURL:crumbsUrl mode: AGSFeatureLayerModeSnapshot];
+    self.crumbsFeatureLayer.infoTemplateDelegate = self.crumbsFeatureLayer;
+    self.crumbsFeatureLayer.outFields = [NSArray arrayWithObject:@"*"];   
+     
+       
 }
+
 
 - (void) mapViewDidLoad:(AGSMapView *)mapView {
     [self.mapView.gps start];
     
     self.mapView.calloutDelegate = self;
+    self.lastPoint = nil;
+    
+    // Timers to update the gps is available
+    self.deviceTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(storeDevicePosition:) userInfo:nil repeats:YES];
+    
+    self.crumbsTimer = [NSTimer scheduledTimerWithTimeInterval:(60.0 * 10) target:self selector:@selector(storeDevicePositionCrumbs:) userInfo:nil repeats:YES];
+}
+
+- (void)storeDevicePosition:(NSTimer *)timer
+{
+    if ( self.mapView.gps.enabled == YES )
+    {
+        AGSPoint *point = [self.mapView.gps currentPoint];
+        
+        if ( point.x != self.lastPoint.x) {    
+            
+            // Delete previous points
+            NSString *theQueryString = [[NSString alloc] initWithFormat:@"NAME = '%@'", [[UIDevice currentDevice] name]];
+            [self.devicesFeatureLayer deleteFeaturesWithWhereClause:theQueryString geometry:self.mapView.fullEnvelope spatialRelation:AGSSpatialRelationshipWithin];
+            
+            // Add the last
+            AGSGraphic *graphic = [[AGSGraphic alloc] init];
+            graphic.geometry = point;       
+            graphic.attributes = [[NSMutableDictionary alloc] init];
+            [graphic.attributes setObject:[[UIDevice currentDevice] name] forKey:@"NAME"]; 
+            
+            /*NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"M/d/yyyy h:mm a"];
+            NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];                        
+            [graphic.attributes setObject:dateString forKey:@"SAMPLETIME"];*/
+            
+            NSArray *array = [[NSArray alloc] initWithObjects:graphic, nil];
+            [self.devicesFeatureLayer addFeatures:array];
+            self.lastPoint = point;
+        }
+    }
+}
+
+- (void)storeDevicePositionCrumbs:(NSTimer *)timer
+{
+    if ( self.mapView.gps.enabled == YES )
+    {
+        AGSPoint *point = [self.mapView.gps currentPoint];
+        
+        if ( point.x != self.lastPointCrumb.x) {             
+            // Add the last
+            AGSGraphic *graphic = [[AGSGraphic alloc] init];
+            graphic.geometry = point;       
+            graphic.attributes = [[NSMutableDictionary alloc] init];
+            [graphic.attributes setObject:[[UIDevice currentDevice] name] forKey:@"NAME"]; 
+            
+            /*NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"M/d/yyyy h:mm a"];
+            NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];                        
+            [graphic.attributes setObject:dateString forKey:@"SAMPLETIME"];*/
+            
+            NSArray *array = [[NSArray alloc] initWithObjects:graphic, nil];
+            [self.crumbsFeatureLayer addFeatures:array];
+            self.lastPointCrumb = point;
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -120,23 +204,7 @@
 //
 - (void)mapView:(AGSMapView *)mapView didClickCalloutAccessoryButtonForGraphic:(AGSGraphic *)graphic
 {
-	/*AGSPopupInfo *popupInfo = [AGSPopupInfo popupInfoForGraphic:graphic];
-	if (!popupInfo){
-		return;
-	}
-    
-    [self filterPopupInfo:popupInfo];
-    popupInfo.title = [graphic.attributes objectForKey:@"name"];
-    popupInfo.allowEdit = NO;
-    popupInfo.allowDelete = NO;
-    popupInfo.allowEditGeometry = NO;
-    
-	// create a popup from the popupInfo and a feature
-	self.currentFeatureToInspectPopup = [[[AGSPopup alloc]initWithGraphic:graphic popupInfo:popupInfo]autorelease];
-    
-    self.mapView.callout.hidden = YES;
-    [self inspectButtonPressed:nil];*/
-    
+	
     self.theNewFeature = graphic;
     bNewFeature = NO;
     self.selectedFeatureLayer = (AGSFeatureLayer*) [graphic layer];
@@ -170,8 +238,9 @@
         controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentModalViewController:controller animated:YES];
     } else {
+        self.flipsidePopoverController = nil;
         if (!self.flipsidePopoverController) {
-            FeatureTypeViewController *controller = [[FeatureTypeViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
+            FeatureTypeViewController *controller = [[FeatureTypeViewController alloc] initWithNibName:@"FeatureTypeViewController" bundle:nil];
             
             controller.waterSourceFeatureLayer = self.waterSourceFeatureLayer;
             controller.dwellingFeatureLayer = self.dwellingFeatureLayer;
@@ -192,12 +261,19 @@
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
+        controller.mapView = self.mapView;
+        controller.crumbsFeatureLayer = self.crumbsFeatureLayer;
+        
         controller.delegate = self;
         controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
         [self presentModalViewController:controller animated:YES];
     } else {
+        self.flipsidePopoverController = nil;
         if (!self.flipsidePopoverController) {
-            FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
+            FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];            
+            controller.mapView = self.mapView;
+            controller.crumbsFeatureLayer = self.crumbsFeatureLayer;
+            
             controller.delegate = self;
             
             self.flipsidePopoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
@@ -225,8 +301,7 @@
     //create new feature
     self.theNewFeature = controller.feature;
     
-    //set up sketch layer
-    
+        
     //create a sketch layer
     self.sketchLayer = [[AGSSketchGraphicsLayer alloc]initWithGeometry:nil];
     

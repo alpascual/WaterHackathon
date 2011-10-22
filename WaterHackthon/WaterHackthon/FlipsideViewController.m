@@ -11,6 +11,11 @@
 @implementation FlipsideViewController
 
 @synthesize delegate = _delegate;
+@synthesize mapView = _mapView;
+@synthesize gpsSwitch = _gpsSwitch;
+@synthesize baseMaps = _baseMaps;
+@synthesize gpsHistory = _gpsHistory;
+@synthesize crumbsFeatureLayer = _crumbsFeatureLayer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,8 +36,23 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [super viewDidLoad];	
+ 
+    [self.gpsSwitch setOn:self.mapView.gps.enabled];
+    
+    NSArray *layers = [[NSArray alloc] initWithArray:[self.mapView mapLayers]];
+    AGSTiledLayer *baseLayer = [layers objectAtIndex:0];
+        
+    if ( [baseLayer isKindOfClass:[AGSOpenStreetMapLayer class]] )
+        self.baseMaps.selectedSegmentIndex = 0;
+    else
+        self.baseMaps.selectedSegmentIndex = 1;
+    
+    // Is the crumbs enabled?
+    if ( [layers count] < 5 )   
+        [self.gpsHistory setOn:NO];
+    else
+        [self.gpsHistory setOn:YES];
 }
 
 - (void)viewDidUnload
@@ -77,6 +97,43 @@
 - (IBAction)done:(id)sender
 {
     [self.delegate flipsideViewControllerDidFinish:self];
+}
+
+- (IBAction)gpsSelected:(id)sender
+{
+    
+    if ( self.gpsSwitch.isOn == YES )
+        [self.mapView.gps start];
+    else
+        [self.mapView.gps stop];
+    
+}
+
+- (IBAction)baseMapSwitch:(id)sender
+{
+    [self.mapView removeMapLayerWithName:@"BaseLayer"];
+    
+    if ( self.baseMaps.selectedSegmentIndex == 0 )
+    {
+        AGSOpenStreetMapLayer *openSteetMap = [[AGSOpenStreetMapLayer alloc] init];
+        [self.mapView insertMapLayer:openSteetMap withName:@"BaseLayer" atIndex:0];       
+    }
+    else if ( self.baseMaps.selectedSegmentIndex == 1)
+    {
+        AGSTiledMapServiceLayer *tiled = [[AGSTiledMapServiceLayer alloc] initWithURL:[NSURL URLWithString:@"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"]];
+        [self.mapView insertMapLayer:tiled withName:@"BaseLayer" atIndex:0];
+    }
+           
+    
+    [self.delegate flipsideViewControllerDidFinish:self];
+}
+
+- (IBAction)gpsHistorySwitch:(id)sender {
+    
+    if ( self.gpsHistory.isOn == YES )
+        [self.mapView addMapLayer:self.crumbsFeatureLayer withName:@"breadcrumbs"];
+    else
+        [self.mapView removeMapLayerWithName:@"breadcrumbs"];
 }
 
 @end

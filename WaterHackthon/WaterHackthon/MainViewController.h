@@ -22,9 +22,14 @@
 @property (strong, nonatomic) AGSFeatureLayer *waterSourceFeatureLayer;
 @property (strong, nonatomic) AGSFeatureLayer *dwellingFeatureLayer;
 @property (strong, nonatomic) AGSFeatureLayer *devicesFeatureLayer;
+@property (strong, nonatomic) AGSFeatureLayer *crumbsFeatureLayer;
 @property (strong, nonatomic) AGSGraphic *theNewFeature;
 @property (strong, nonatomic) AGSSketchGraphicsLayer *sketchLayer;
 @property (strong) AGSFeatureLayer *selectedFeatureLayer;
+@property (strong, nonatomic) NSTimer *deviceTimer;
+@property (strong, nonatomic) NSTimer *crumbsTimer;
+@property (strong, nonatomic) AGSPoint *lastPoint;
+@property (strong, nonatomic) AGSPoint *lastPointCrumb;
 
 - (IBAction)showInfo:(id)sender;
 
