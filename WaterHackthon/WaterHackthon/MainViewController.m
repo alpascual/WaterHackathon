@@ -81,17 +81,6 @@
     
     //[self.mapView addMapLayer:self.crumbsFeatureLayer withName:@"breadcrumbs"];
     
-    
-    
-    
-    /*AGSCredential* credential = [[AGSCredential alloc] initWithUser:@"<user>" password:@"<password>"];
-    credential.authType = AGSAuthenticationTypeToken;
-    AGSWebMap* webmap = [AGSWebMap webMapWithItemId:@"d345182bf6f14720a5c2acd7c89a06b2" credential:credential];    
-       
-    webmap.delegate = self;    
-    
-    [webmap openIntoMapView:self.mapView];*/
-
        
 }
 
